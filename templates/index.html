@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedBull Formula 1</title>
+    <link rel="icon" href="https://stunodracing.net/index.php?attachments/redbull-racing-team-png.128674/"
+        type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+    
+    <link href="../static/style.css" rel="stylesheet"> <!-- -->
+</head>
+
+<body data-bs-theme="dark" style="background-color: rgb(22, 22, 22);">
+
+    <div id="preloader"> </div>
+
+    <nav class="navbar fixed-top "
+        style="background: rgba(17, 17, 17, 0.8);backdrop-filter: blur(10px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+        <a class="navbar-brand " href="#">
+            <img class="mx-4"
+                src="https://www.oracle.com/node/oce/storyhub/prod/api/v1.1/assets/CONT4E605FB120E142D48836092BFDE3F3C9/native/customerlogo-red-bull-racing-clr.svg"
+                alt="RedBull" height="35px">
+        </a>
+        <div class="d-flex">
+            <a class="navbar-brand mx-4" href="#">
+                <img class="" src="https://logodownload.org/wp-content/uploads/2016/11/formula-1-logo-7.png" alt="F1"
+                    height="15px">
+            </a>
+            <a class="navbar-brand me-5" href="#">
+                <img class="" src="https://pnghq.com/wp-content/uploads/pnghq.com-red-bull-racing-logo-high-7.png"
+                    alt="ORACLE" height="30px">
+            </a>
+        </div>
+    </nav>
+
+    <div class="decor">
+        <img src="https://cdn.ferrari.com/cms/network/media/img/resize/5e4aa623f5d28817071c87c9-cordolo?width=1920&height=0"
+            height="10px">
+    </div>
+
+    <div class="container" style="width: 75%; margin-top: 100px;">
+
+        <form class="my-4" onsubmit="submitForm(event)">
+
+            <section class="splide" aria-labelledby="carousel-heading">
+                <h2 class="" id="carousel-heading">Select Circuit <span style="font-size:medium;"> (Event) </span>&nbsp;
+                    : </h2>
+
+                <div class="splide__track" style="padding-top: 3%; padding-bottom: 5%;">
+                    <ul class="splide__list maps">
+                        <input type="radio" class="btn-check" name="stint" value="1" id="1" autocomplete="off" checked
+                            onclick="getSelectedPitStop()">
+                    </ul>
+                </div>
+            </section>
+            <br><br>
+            <div style="display: flex;">
+                <div style="width: 50%;">
+                    <label class="stint my-2" for="stint"> Pit Stop :
+                    </label>
+                    <div class="btn-group-horizontal" role="group" aria-label="horizontal radio toggle button group">
+                        <input type="radio" class="btn-check" name="stint" value="1" id="1st" autocomplete="off"
+                            onclick="getSelectedPitStop()">
+                        <label class="btn btn-outline-danger" for="1st"> 1</label>
+                        <input type="radio" class="btn-check" name="stint" value="2" id="2nd" autocomplete="off"
+                            onclick="getSelectedPitStop()">
+                        <label class="btn btn-outline-danger" for="2nd"> 2</label>
+                        <input type="radio" class="btn-check" name="stint" value="3" id="3rd" autocomplete="off"
+                            onclick="getSelectedPitStop()">
+                        <label class="btn btn-outline-danger" for="3rd"> 3</label>
+                        <input type="radio" class="btn-check" name="stint" value="4" id="4th" autocomplete="off"
+                            onclick="getSelectedPitStop()">
+                        <label class="btn btn-outline-danger" for="4th"> 4</label>
+                    </div>
+                    <br>
+
+                    <!-- meanAirTemp : <input type="text" class="meanAirTemp" placeholder="meanAirTemp"> -->
+                    <div style="display: flex;">
+                        <label class="form-label">Mean Air Temperature : </label>
+                        <input type="text" class="form-control" id="airTemp" readonly>
+                    </div>
+                    <br>
+                    <input type="range" class="form-range meanAirTemp" min="0" max="37" step="0.1">
+                    <br><br>
+
+                    <div style="display: flex;">
+                        <label class="form-label">Mean Track Temperature : </label>
+                        <input type="text" class="form-control" id="trackTemp" readonly>
+                    </div>
+                    <br>
+                    <input type="range" class="form-range meanTrackTemp" min="0" max="55" step="0.1">
+                    <br><br>
+
+
+                    <div style="display: flex;">
+                        <label class="form-label">Mean Humidity : </label>
+                        <input type="text" class="form-control" id="humidity" readonly>
+                    </div>
+                    <br>
+                    <input type="range" class="form-range meanHumid" min="0" max="97" step="0.1">
+                    <br><br>
+
+                    <div style="display: flex;width: 80%;">
+                        <h3 class="me-3">Rainfall: </h3>
+                        <input type="radio" class="btn-check" name="rain" value="0" id="rain0" autocomplete="off"
+                            onclick="selectRain()">
+                        <label class="btn btn-outline-danger" style="font-size: small;" for="rain0"> No Rain</label>
+                        <input type="text" class="form-control mx-3" id="Rain">
+                        <input type="radio" class="btn-check" name="rain" value="1" id="rain1" autocomplete="off"
+                            onclick="selectRain()">
+                        <label class="btn btn-outline-danger" style="font-size: small;" for="rain1"> Heavy Rain</label>
+                        <br><br>
+                    </div>
+
+                    <br>
+                    <div style="display: flex;">
+                        <h6>Lap Number while Pitting : </h6>
+                        <input type="text" class="form-control me-5" id="lapNumber">
+                    </div>
+                    <br><br><br>
+                    <div>
+                        <h4>Racers : </h4>
+                        <div style="display: flex; padding: 3%;">
+                            <h1 style="font-family: 'Protest Strike';opacity: 0.5">1</h1>
+                            <input type="radio" class="btn-check" name="driver" value="1" id="max" autocomplete="off" onclick="getSelectedDriv()">
+                            <label class="btn btn-outline-dark" style="height: 10%;padding-bottom: 0;" for="max"> 
+                                <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png" height="200px">
+                                <p>Max Verstappen</p>
+                            </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <h1 style="font-family: 'Protest Strike';opacity: 0.5;">11</h1>
+                            <input type="radio" class="btn-check" name="driver" value="2" id="perez" autocomplete="off" onclick="getSelectedDriv()">
+                            <label class="btn btn-outline-dark" style="height: 10%;padding-bottom: 0;" for="perez"> 
+                                <img src="https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.png" height="200px">
+                                <p>Sergio Perez</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="decor2">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/5e4aa623f5d28817071c87c9-cordolo?width=1920&height=0"
+                        height="10px">
+                </div>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div style="width: 50%;height: 100%;">
+                    <!-- <input type="text" class="GridPosition" placeholder="GridPosition"> -->
+                    <div class="btn-group-horizontal grids" role="group" aria-label="horizontal radio toggle button group"
+                        style="display: flex;">
+                        
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light submitform">Predict Best Strategy</button>
+
+        </form>
+        <div id="predictionResult" style="height: 300px;">
+            <h1>Strategy : <b style="color: white;"></b></h1> <br>
+            <!-- <div class="move-rotate">
+                <img src="https://ia803401.us.archive.org/17/items/2018-pirelli-f1-tyres/Medium.png">
+            </div> -->
+        </div>
+
+        <img style="margin-left: 80%;" src="https://www.redbullracing.com/_next/static/media/rb20.f33cb12a.png" height="50px">
+
+    </div>
+    <div style="background-color: white; opacity: 0.2;">
+        <div class="container py-4" style="width: 60%;">
+            <p style="color: black; text-align: center; font-size: x-small;">
+                Red Bull Racing, established in 2005, is a Formula 1 team based in Milton Keynes, UK.
+                <br>
+                Red Bull Racing won four consecutive Constructors' Championships from 2010 to 2013, driven by star driver Sebastian Vettel, who also secured four Drivers' Championships during that period.
+                <br><br>
+                &#169; Copyright 2024 Red Bull Racing Ltd
+            </p>
+        </div>
+    </div>
+
+    <script src="../static/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+body {
+    font-family: 'Michroma';
+}
+#preloader {
+    background: black url(https://www.redbullracing.com/_next/static/media/redbullracing-logo.d791f20e.png) no-repeat center center;
+    background-size: 15%;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    opacity: 1;
+    animation-fill-mode: forwards;
+}
+#preloader.hidden {
+    animation: fadeOut 0.5s ease;
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+.splide__slide {
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.splide__slide img {
+    height: 200px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.splide__slide.is-active {
+    transform: scale(1.2);
+    z-index: 1;
+    opacity: 1;
+}
+
+.splide__slide:not(.is-active) {
+    transform: scale(0.9);
+    opacity: 0.3;
+}
+.decor {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 500px;
+}
+.decor2{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 1230px;
+    left: 0px;
+}
+.move-rotate {
+    position: absolute;
+    animation: moveRotate 2s linear;
+}
+
+@keyframes moveRotate {
+    0% {
+        transform: translateX(-360px) rotate(180deg);
+    }
+    50% {
+        transform: translateX(0) rotate(360deg);
+    }
+    100% {
+        transform: translateX(0) rotate(360deg);
+    }
+}
+
+.move-rotate img {
+    width: 200px; /* Set the size of the image */
+    height: auto; /* Maintain aspect ratio */
+}

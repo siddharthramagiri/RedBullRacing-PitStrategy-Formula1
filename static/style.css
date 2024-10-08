@@ -76,4 +76,6 @@ body {
 .move-rotate img {
     width: 200px; /* Set the size of the image */
     height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; 
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.5);
 }

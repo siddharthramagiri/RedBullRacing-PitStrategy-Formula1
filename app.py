@@ -5,7 +5,7 @@ import pandas as pd
 
 app = Flask(__name__)
 
-best_clf = pickle.load(open('Strategy_Pred.pkl','rb'))
+best_clf = pickle.load(open('RF_Strategy.pkl','rb'))
 FEATURES = ['EventName','Stint','meanAirTemp','meanTrackTemp','meanHumid','Rainfall','GridPosition','lapNumberAtBeginingOfStint']
 
 
